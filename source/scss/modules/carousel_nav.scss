@@ -1,0 +1,39 @@
+.main {
+    .carousel_nav_container {
+        display: none;
+    }
+}
+
+.main--carousel {
+
+    .carousel_nav_container {
+        display: block;
+    }
+
+    .carousel_nav {
+        position: absolute;
+        font-size: 0;
+        border: 0;
+        top: 0;
+        bottom: 0;
+        width: 35px;
+        text-decoration: none;
+        z-index: 3;
+        background-color: black;
+        background-color: rgba(0,0,0,0.7);
+        background-position: 50%;
+        background-size: 50%;
+
+        &:hover {
+            background-color: rgba(0,0,0,0.9);
+        }
+    }
+
+    .carousel_nav--prev {
+        left: 0;
+    }
+
+    .carousel_nav--next {
+        right: 0;
+    }
+}

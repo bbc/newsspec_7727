@@ -1,0 +1,24 @@
+.rtl {
+
+    .main--carousel {
+        
+        .carousel_small__item,
+        .carousel_large__item {
+            float: right;
+        }
+
+        .carousel_nav_container--large {
+            .carousel_nav--next {
+                right: auto;
+                left: 0;
+
+                @include horizontalFlip;
+            }
+            .carousel_nav--prev {
+                left: auto;
+                right: 0;
+            }
+        }
+    }
+
+}

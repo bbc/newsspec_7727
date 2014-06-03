@@ -1,0 +1,51 @@
+.main .introduction {
+	position: relative;
+}
+
+.main--carousel .introduction  {
+
+	cursor: pointer;
+
+	.introduction-textwrapper__launcher_icon {
+		position: absolute;
+		display: block;
+		height: 34px;
+		width: 25px;
+		background-color: transparent;
+		bottom: 40%;
+		right: 1%;
+	}
+
+	.introduction-textwrapper {
+		position: absolute;
+		bottom: 4%;
+		color: white;
+		max-width: 500px;
+		background: rgb(0,0,0);
+		background: rgba(0,0,0,0.3);
+		transition: background 1s;
+		left: 3%;
+		padding: 0 10px;
+	}
+
+	&:hover .introduction-textwrapper {
+		background: rgba(0,0,0,1);
+	}
+
+	.introduction-textwrapper__text {
+		position: relative;
+		padding: 0 50px 0 10px;
+
+		h2 {
+			font-size: 2.2em;
+		}
+
+		p {
+			color: white;
+		}
+	}
+}
+
+.main--carousel .introduction--clicked {
+	display: none;
+}

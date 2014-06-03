@@ -1,0 +1,50 @@
+/* use proper box model */
+*, *:before, *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/* Self clear automatically */
+.selfclear:before, .selfclear:after {
+    content: "";
+    display: table;
+} 
+.selfclear:after {
+    clear: both;
+}
+.selfclear {
+    zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+}
+
+body {
+    color: #505050;
+    font-size: 13px;
+    line-height: 16px
+}
+
+.main {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.main--carousel {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+p {
+    color: #333;
+    font-size: 1.077em;
+    line-height: 1.3em;
+}
+
+img {
+	width: 100%;
+	height: auto;
+}
+
+ul {
+	list-style-type: none;
+	padding: 0;
+}
