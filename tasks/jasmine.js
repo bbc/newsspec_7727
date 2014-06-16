@@ -8,8 +8,8 @@ module.exports = function (grunt) {
                 template: require('grunt-template-jasmine-requirejs'),
                 templateOptions: {
                     requireConfig: {
-                        baseUrl: '<%= requirejs.jquery1.options.baseUrl %>',
-                        paths: '<%= requirejs.jquery1.options.paths %>'
+                        baseUrl: '<%= requirejs.build.options.baseUrl %>',
+                        paths: '<%= requirejs.build.options.paths %>'
                     }
                 }
             }

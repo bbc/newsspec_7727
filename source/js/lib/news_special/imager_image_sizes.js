@@ -1,1 +1,1 @@
-define(function () {return [320, 640, 1024]; });
+define(function () {return [320, 440, 540, 620]; });

@@ -18,6 +18,15 @@ module.exports = function (grunt) {
         }]
     });
 
+    grunt.config(['copy', 'thumbnailImages'], {
+        files: [{
+            expand: true,
+            cwd: 'source/img/thumbnails',
+            src: '*.*',
+            dest: 'content/<%= config.services.default %>/img/thumbnails'
+        }]
+    });
+
     grunt.config('responsive_images', {
         main: {
             options: {
@@ -52,6 +61,6 @@ module.exports = function (grunt) {
         grunt.loadNpmTasks('grunt-contrib-copy');
         grunt.loadNpmTasks('grunt-contrib-imagemin');
         grunt.loadNpmTasks('grunt-responsive-images');
-        grunt.task.run('copy:standardImages', 'responsive_images', 'imagemin');
+        grunt.task.run('copy:standardImages', 'copy:thumbnailImages', 'responsive_images', 'imagemin');
     });
 };

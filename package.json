@@ -5,7 +5,7 @@
     "url": "http://github.com/BBCVisualJournalism/newsspec_7727"
   },
   "description":    "Nelson Mandela Timeline - moved into the iFrame Scaffold",
-  "version":        "1.2.0",
+  "version":        "1.2.1",
   "devDependencies": {
     "grunt":                            "~0.4.0",
     "grunt-cli":                        "~0.1.11",
