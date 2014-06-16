@@ -6,11 +6,12 @@ module.exports = function (grunt) {
     // *************************************************************************
 
     var amdModulePaths = {
-        'pubsub':      './lib/vendors/jquery/pubsub',
-        'istats':      './lib/vendors/istats/istats',
+        'pubsub': './lib/vendors/jquery/pubsub',
+        'istats': './lib/vendors/istats/istats',
         'bump-3':      './lib/vendors/bump-3/bump-3',
         // bump dependencies
-        'swfobject-2': './lib/vendors/swf/swfobject-2'
+        'swfobject-2': './lib/vendors/swf/swfobject-2',
+        'jquery-1.9': './lib/vendors/jquery/jquery-1.9.1-version_for_bump'
     };
 
     // *************************************************************************
@@ -19,22 +20,18 @@ module.exports = function (grunt) {
     // *************************************************************************
 
     var _ = require('lodash-node');
-
-    var requirePathsForJqueryBuild = _.merge({
-            'jquery-1.9': './lib/vendors/jquery/jquery-1.9.1-version_for_bump'
-        }, amdModulePaths);
     
     grunt.config(['amdModulePaths'], amdModulePaths);
 
-    grunt.config(['requirejs', 'jquery1'], {
+    grunt.config(['requirejs', 'build'], {
         options: {
             baseUrl: './source/js',
-            paths: requirePathsForJqueryBuild,
+            paths: amdModulePaths,
             optimize: 'uglify2',
             generateSourceMaps: true,
             preserveLicenseComments: false,
             name: './app',
-            out: './content/<%= pkg.services.default %>/js/all.js'
+            out: './content/<%= config.services.default %>/js/all.js'
         }
     });
     grunt.loadNpmTasks('grunt-contrib-requirejs');

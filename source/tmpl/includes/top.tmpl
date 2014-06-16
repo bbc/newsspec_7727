@@ -155,25 +155,10 @@ var logoModifier = translations[vocab_dir].name;
 <%= inlineStyleElm %>
 <script>
 document.documentElement.className = "js";
-window.istats = {
-  enabled: true
+if (window.location.href.split('onbbcdomain=')[1] == 'true') {
+    document.documentElement.className += ' onbbcdomain';
 }
-window.bbcFlagpoles_istats = "ON";
-window.istatsTrackingUrl = '//sa.bbc.co.uk/bbc/bbc/s?name=<%= istatsName %>&cps_asset_id=<%= cpsId %>&page_type=story';
-(function () {
-    if (window.location.href.split('onbbcdomain=')[1] == 'true') {
-        document.documentElement.className += ' onbbcdomain';
-    }
-    var hostId = window.location.href.match(/hostid=(.*)&/);
-    if (hostId && hostId.length) {
-        window.istatsTrackingUrl += "&iframe_host=" + encodeURI(hostId[1]);
-    }
-})();
-document.write('<' + 'p style="position: absolute; top: -999em;"><' + 'img src="' + window.istatsTrackingUrl + '" height="1" width="1" alt="" /><' + '/p>');
 </script>
-<noscript>
-<p style="position: absolute; top: -999em;"><img src="//sa.bbc.co.uk/bbc/bbc/s?name=<%= istatsName %>&amp;cps_asset_id=<%= cpsId %>&amp;page_type=story" height="1" width="1" alt="" /></p>
-</noscript>
 <!--[if lt IE 9]>
     <link type="text/css" rel="stylesheet" href="<%= pathStatic %>/<%= vocab_dir %>/css/legacy-ie.css?v=<%= version %>" />
     <script>

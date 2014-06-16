@@ -3,10 +3,10 @@ module.exports = function (grunt) {
         files: [{
             expand: true,
             cwd:    'source/scss/news_special/f/',
-            src:    ['*.*'],
-            dest:   'content/<%= pkg.services.default %>/css/f'
+            src:    ['share_tools.png', 'bbc.png'],
+            dest:   'content/<%= config.services.default %>/css/f'
         }]
     });
     grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.registerTask('default', ['add_environment_data', 'css', 'js', 'uglify', 'multi_lang_site_generator:default', 'copy:cssFurniture', 'clean:main']);
+    grunt.registerTask('default', ['css', 'js', 'html', 'copy:cssFurniture', 'clean:main']);
 };

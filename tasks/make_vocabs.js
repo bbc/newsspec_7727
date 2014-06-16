@@ -3,13 +3,13 @@ module.exports = function (grunt) {
         default: {
             options: {
                 output_directory:      'source/vocabs',
-                google_spreadsheet_id: '<%= pkg.vocabs.googleSpreadsheetId %>',
-                worksheet:             '<%= pkg.vocabs.worksheet %>',
+                google_spreadsheet_id: '<%= config.vocabs.googleSpreadsheetId %>',
+                worksheet:             '<%= config.vocabs.worksheet %>',
                 username:              '<%= env.google.username %>',
                 password:              '<%= env.google.password %>'
             }
         }
     });
     grunt.loadNpmTasks('grunt-cloudfile-to-vocab');
-    grunt.registerTask('make_vocabs', ['add_environment_data', 'cloudfile_to_vocab']);
+    grunt.registerTask('make_vocabs', ['cloudfile_to_vocab']);
 };

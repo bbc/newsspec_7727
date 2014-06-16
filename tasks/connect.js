@@ -45,5 +45,4 @@ module.exports = function (grunt) {
         }
     });
     grunt.loadNpmTasks('grunt-contrib-connect');
-    grunt.registerTask('server', ['add_environment_data', 'connect']);
 };

@@ -1,4 +1,4 @@
-define(function() {
+define('istats-1', function() {
     var exports = {},     // use name "exports" to make intention clear and also JSDoc work better
         istats = exports, // alias for internal use
 

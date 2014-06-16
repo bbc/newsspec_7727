@@ -5,22 +5,7 @@
     "url": "http://github.com/BBCVisualJournalism/newsspec_7727"
   },
   "description":    "Nelson Mandela Timeline - moved into the iFrame Scaffold",
-  "version":        "1.2.0",
-  "debug":          "false",
-  "whichEnv":       "local",
-  "project_number": "7727",
-  "cpsId":          "--REPLACEME--",
-  "storyPageUrl":   "--REPLACEME--",
-  "year":           "2014",
-  "istatsName":     "--REPLACEME--",
-  "vocabs": {
-    "googleSpreadsheetId": "--REPLACEME--",
-    "worksheet":           ""
-  },
-  "services": {
-    "default": "english",
-    "others": ["afrique", "arabic", "greatlakes", "hausa", "hindi", "indonesia", "kyrgyz", "mundo", "persian", "portuguese", "russian", "somali", "swahili", "turkish", "ukrainian", "urdu", "vietnamese"]
-  },
+  "version":        "1.2.1",
   "devDependencies": {
     "grunt":                            "~0.4.0",
     "grunt-cli":                        "~0.1.11",
@@ -30,6 +15,7 @@
     "grunt-concurrent":                 "~0.4.3",
     "grunt-contrib-copy":               "~0.4.1",
     "grunt-contrib-csslint":            "~0.2.0",
+    "grunt-contrib-cssmin":             "0.9.0",
     "grunt-contrib-imagemin":           "~0.3.0",
     "grunt-contrib-jasmine":            "~0.5.x",
     "grunt-contrib-jshint":             "0.6.4",
@@ -37,6 +23,7 @@
     "grunt-contrib-sass":               "~0.5.0",
     "grunt-contrib-watch":              "~0.5.3",
     "grunt-contrib-uglify":             "0.2.4",
+    "grunt-jsonlint":                   "1.0.4",
     "grunt-multi-lang-site-generator":  "~0.2.1",
     "grunt-responsive-images":          "0.1.1",
     "grunt-preprocess":                 "~3.0.1",

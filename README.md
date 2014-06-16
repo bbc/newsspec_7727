@@ -57,9 +57,23 @@ I have outlined the changes below:
 
 #### Changes to /tasks/
 
-Line 17 of js.js - removed the call to requirejs:jquery2.
+require.js, removed the jquery2 task, changed the output from all-html5.js to all.js, added necessary modules (swfobject-2 and bump-3 and jquery-1.9) to amdModulePaths. Removed requirepaths. Renamed jquery2 task to just 'build'.
 
-In require.js, removed the jquery2 task, changed the output from all-html5.js to all.js, renamed version of jquery on line 24.
+Changed js.js to call 'requirejs:build' instead of the separate jquery-1 and jquery-2 tasks.
+
+Added 'universal-selector': false to the csslint.js task.
+
+Added a 'copy:thumbnailImages' task to images.js.
+
+Changed jasmine.js to point to requirejs:build.
+
+#### Changes to /source/js/vendors/
+
+Added bump-3/bump-3.js.
+
+Added swf/swfobject-2.js.
+
+Added jquery/jquery-1.9.1-version_for_bump.js
 
 #### Changes to /source/js/lib/
 
@@ -78,7 +92,7 @@ Line 48 - hardcode the version of jQuery that is used in debug mode.
 
 ## iFrame scaffold
 
-This project was built using the iFrame scaffold v1.3
+This project was built using the iFrame scaffold v1.4.1
 
 ## License
 Copyright (c) 2014 BBC

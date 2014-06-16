@@ -26,7 +26,7 @@ module.exports = function (grunt) {
                 'universal-selector'            : false,
                 'force'                         : true
             },
-            src: ['./content/<%= pkg.services.default %>/css/main.css']
+            src: ['./content/<%= config.services.default %>/css/main.css']
         });
     grunt.loadNpmTasks('grunt-contrib-csslint');
 };

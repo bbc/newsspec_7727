@@ -1,6 +1,6 @@
 module.exports = function (grunt) {
     grunt.config(['replace', 'prepStageDeploy'], {
-        src: ['tmp/*/**.*'],
+        src: ['tmp/*/**.*', 'tmp/*/half_wide/**.*'],
         overwrite: true,
         replacements: [{
             from: '<%= env.local.domain %>',
@@ -12,10 +12,10 @@ module.exports = function (grunt) {
     });
     grunt.config(['copy', 'stageDeploy'], {
         files: [
-            {expand: true, cwd: 'tmp', src: ['**'], dest: '<%= env.stage.mount %>/news/special/<%= pkg.year %>/newsspec_<%= pkg.project_number %>/content'}
+            {expand: true, cwd: 'tmp', src: ['**'], dest: '<%= env.stage.mount %>/news/special/<%= config.year %>/newsspec_<%= config.project_number %>/content'}
         ]
     });
     grunt.loadNpmTasks('grunt-text-replace');
     grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.registerTask('stage', ['add_environment_data', 'shell:checkMounts', 'stage_checklist', 'prepDeploy', 'replace:prepStageDeploy', 'copy:stageDeploy', 'clean:main']);
+    grunt.registerTask('stage', ['shell:checkMounts', 'stage_checklist', 'prepDeploy', 'replace:prepStageDeploy', 'copy:stageDeploy', 'clean:main']);
 };

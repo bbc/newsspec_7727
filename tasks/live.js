@@ -1,11 +1,11 @@
 module.exports = function (grunt) {
     grunt.config(['copy', 'liveDeploy'], {
         files: [
-            {expand: true, cwd: 'tmp', src: ['**'], dest: '<%= env.live.mount %>/news/special/<%= pkg.year %>/newsspec_<%= pkg.project_number %>/content'}
+            {expand: true, cwd: 'tmp', src: ['**'], dest: '<%= env.live.mount %>/news/special/<%= config.year %>/newsspec_<%= config.project_number %>/content'}
         ]
     });
     grunt.config(['replace', 'prepLiveDeploy'], {
-        src: ['tmp/*/**.*'],
+        src: ['tmp/*/**.*', 'tmp/*/half_wide/**.*'],
         overwrite: true,
         replacements: [{
             from: '<%= env.local.domain %>',
@@ -17,5 +17,5 @@ module.exports = function (grunt) {
     });
     grunt.loadNpmTasks('grunt-text-replace');
     grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.registerTask('live', ['stage_checklist', 'checkStage', 'add_environment_data', 'prepDeploy', 'replace:prepLiveDeploy', 'copy:liveDeploy', 'clean:main']);
+    grunt.registerTask('live', ['stage_checklist', 'checkStage', 'prepDeploy', 'replace:prepLiveDeploy', 'copy:liveDeploy', 'clean:main']);
 };
