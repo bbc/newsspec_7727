@@ -1,4 +1,4 @@
-define(['jquery'], function($) {
+define(['jquery-1.9'], function($) {
     
     /*!
      * jQuery Tiny Pub/Sub - v0.6 - 1/10/2011

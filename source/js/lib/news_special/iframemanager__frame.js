@@ -1,4 +1,4 @@
-define(['jquery'], function ($) {
+define(['jquery-1.9'], function ($) {
     var hostCommunicator = {
         postMessageAvailable: (window.postMessage ? true : false),
         init: function () {

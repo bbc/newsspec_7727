@@ -42,10 +42,10 @@
             var config = {
                     urlArgs: "v=<%= version %>"
                 },
-                moduleToStartApp = '<%= pathStatic %>/<%= vocab_dir %>/js/all-'+browserType+'.js';
+                moduleToStartApp = '<%= pathStatic %>/<%= vocab_dir %>/js/all.js';
 
             if (debug) {
-                var jqueryVersion   = (browserType === 'html5') ? 'jquery-2.0.3' : 'jquery-1.9.1';
+                var jqueryVersion   = 'jquery-1.9.1-version_for_bump';
                 config.baseUrl      = "<%= pathStatic %>/<%= vocab_dir %>/js/";
                 config.paths        = <%= amdModulePaths %>;
                 config.paths.jquery = './lib/vendors/jquery/' + jqueryVersion;

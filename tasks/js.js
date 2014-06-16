@@ -58,7 +58,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
 
     grunt.config(['concurrent', 'js'], {
-        tasks: ['jshint', 'jasmine', 'requirejs:jquery1', 'requirejs:jquery2']
+        tasks: ['jshint', 'jasmine', 'requirejs:build']
     });
     grunt.loadNpmTasks('grunt-concurrent');
     grunt.registerTask('js', ['clean:allJs', 'overrideImagerImageSizes', 'concurrent:js', 'copyRequiredJs']);

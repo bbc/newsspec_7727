@@ -4,7 +4,7 @@
   "project_number": "7727",
   "cpsId":          "--REPLACEME--",
   "year":           "2014",
-  "imageWidths":    ["320", "640", "1024"],
+  "imageWidths":    ["320", "440", "540", "620"],
   "vocabs": {
     "googleSpreadsheetId": "--REPLACEME--",
     "worksheet":           ""

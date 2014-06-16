@@ -1,5 +1,5 @@
 define([
-    'jquery',
+    'jquery-1.9',
     'lib/news_special/iframemanager__frame',
     'lib/news_special/imager',
     'lib/news_special/imager_image_sizes',
