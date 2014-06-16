@@ -1,31 +1,33 @@
 module.exports = function (grunt) {
+
+    var config = grunt.file.readJSON('config.json'),
+        imageWidths = [];
+
+    for (var i = 0; i < config.imageWidths.length; i++) {
+        imageWidths.push({
+            width: config.imageWidths[i]
+        });
+    }
+    
     grunt.config(['copy', 'standardImages'], {
         files: [{
             expand: true,
             cwd: 'source/img',
-            src: '**/*.*',
-            dest: 'content/<%= pkg.services.default %>/img'
+            src: '*.*',
+            dest: 'content/<%= config.services.default %>/img'
         }]
     });
 
     grunt.config('responsive_images', {
         main: {
             options: {
-                sizes: [{
-                    width: 320
-                }, {
-                    width: 440
-                }, {
-                    width: 540
-                }, {
-                    width: 620
-                }]
+                sizes: imageWidths
             },
             files: [{
                 expand: true,
                 src: ['**.{jpg,gif,png}'],
                 cwd: 'source/img/responsive',
-                custom_dest: 'content/<%= pkg.services.default %>/img/{%= width %}/'
+                custom_dest: 'content/<%= config.services.default %>/img/{%= width %}/'
             }]
         }
     });
@@ -39,7 +41,7 @@ module.exports = function (grunt) {
             files: [
                 {
                     expand: true,
-                    src: ['content/<%= pkg.services.default %>/img/**/*.*', '<%= pkg.services.default %>/css/f/**.*'],
+                    src: ['content/<%= config.services.default %>/img/**/*.*', '<%= config.services.default %>/css/f/**.*'],
                     dest: './'
                 }
             ]
@@ -48,8 +50,8 @@ module.exports = function (grunt) {
  
 	grunt.registerTask('images', [], function () {
         grunt.loadNpmTasks('grunt-contrib-copy');
-        //grunt.loadNpmTasks('grunt-contrib-imagemin');
+        grunt.loadNpmTasks('grunt-contrib-imagemin');
         grunt.loadNpmTasks('grunt-responsive-images');
-        grunt.task.run('copy:standardImages', 'responsive_images'/*, 'imagemin'*/);
+        grunt.task.run('copy:standardImages', 'responsive_images', 'imagemin');
     });
 };

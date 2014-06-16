@@ -1,17 +1,17 @@
 define([
-    'jquery-1.9',
+    'jquery',
     'lib/news_special/iframemanager__frame',
     'lib/news_special/imager',
-    'istats',
+    'lib/news_special/imager_image_sizes',
     'pubsub'
-], function ($, iframemanager__frame, Imager, istats) {
+], function ($, iframemanager__frame, Imager, imageSizes) {
 
     // responsive iframe
     iframemanager__frame.init();
 
     // responsive images
     var imager = new Imager({
-        availableWidths: [320, 440, 540, 620],
+        availableWidths: imageSizes,
         regex: /(\/news\/.*img\/)\d+(\/.*)$/i
     });
     $.on('resize_images', function () {
@@ -21,17 +21,15 @@ define([
         imager.change_divs_to_imgs();
     });
 
-    // istats
-    istats.init();
-    $.on('istats', function (actionType, actionName, newLabels) {
-        istats.log(actionType, actionName, newLabels);
-    });
-
     return {
         $: $,
         pubsub: $,
-        setIframeHeight: iframemanager__frame.setHeight,
-        hostPageSetup: iframemanager__frame.setHostPageInitialization
+        setStaticIframeHeight: function (newStaticHeight) {
+            iframemanager__frame.setStaticHeight(newStaticHeight);
+        },
+        hostPageSetup: function (callback) {
+            iframemanager__frame.setHostPageInitialization(callback);
+        }
     };
 
 });

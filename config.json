@@ -1,0 +1,16 @@
+{
+  "debug":          "false",
+  "whichEnv":       "local",
+  "project_number": "7727",
+  "cpsId":          "--REPLACEME--",
+  "year":           "2014",
+  "imageWidths":    ["320", "640", "1024"],
+  "vocabs": {
+    "googleSpreadsheetId": "--REPLACEME--",
+    "worksheet":           ""
+  },
+  "services": {
+    "default": "english",
+    "others": ["afrique", "arabic", "greatlakes", "hausa", "hindi", "indonesia", "kyrgyz", "mundo", "persian", "portuguese", "russian", "somali", "swahili", "turkish", "ukrainian", "urdu", "vietnamese"]
+  }
+}

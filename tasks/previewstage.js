@@ -1,6 +1,6 @@
 module.exports = function (grunt) {
     grunt.config(['replace', 'prepPreviewStageDeploy'], {
-        src: ['tmp/*/**.*'],
+        src: ['tmp/*/**.*', 'tmp/*/half_wide/**.*'],
         overwrite: true,
         replacements: [{
             from: '<%= env.local.domain %>',
@@ -12,5 +12,5 @@ module.exports = function (grunt) {
     });
     grunt.loadNpmTasks('grunt-text-replace');
     grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.registerTask('previewstage', ['add_environment_data', 'shell:checkMounts', 'stage_checklist', 'prepDeploy', 'replace:prepPreviewStageDeploy', 'copy:stageDeploy', 'clean:main']);
+    grunt.registerTask('previewstage', ['shell:checkMounts', 'stage_checklist', 'prepDeploy', 'replace:prepPreviewStageDeploy', 'copy:stageDeploy', 'clean:main']);
 };

@@ -1,33 +1,23 @@
 module.exports = function (grunt) {
     grunt.registerTask('stage_checklist', [], function () {
 
-        var pkg = grunt.file.readJSON('package.json');
+        var config = grunt.file.readJSON('package.json');
 
-        if (pkg.debug == true) {
+        if (config.debug == true) {
             grunt.log.warn('"debug" in package.js is set to true, do not deploy to live with this setting!');
         }
 
 
         propertiesToCheck = [
             {
-                value:         pkg.project_number,
+                value:         config.project_number,
                 invalidValues: ['', '0000'],
                 errMessage:    '"project_number" in package.json not set!'
             },
             {
-                value:         pkg.cpsId,
+                value:         config.storyPageUrl,
                 invalidValues: ['', '--REPLACEME--'],
-                errMessage:    '"cpsId" in package.json not set, istats will not work properly!'
-            },
-            {
-                value:         pkg.istatsName,
-                invalidValues: ['', '--REPLACEME--'],
-                errMessage:    '"istatsName" in package.json not set, istats will not work properly!'
-            },
-            {
-                value:         pkg.storyPageUrl,
-                invalidValues: ['', '--REPLACEME--'],
-                errMessage:    '"storyPageUrl" in package.json not set, istats will not work properly!'
+                errMessage:    '"storyPageUrl" in package.json not set, sharetools will not work properly!'
             }
         ];
 

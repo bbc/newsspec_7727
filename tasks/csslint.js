@@ -23,10 +23,9 @@ module.exports = function (grunt) {
                 'unique-headings'               : false,
                 'unqualified-attributes'        : false,
                 'vendor-prefix'                 : false,
-                'universal-selector'            : false,
                 'force'                         : true
             },
-            src: ['./content/<%= pkg.services.default %>/css/main.css']
+            src: ['./content/<%= config.services.default %>/css/main.css']
         });
     grunt.loadNpmTasks('grunt-contrib-csslint');
 };

@@ -1,19 +1,27 @@
 module.exports = function (grunt) {
-    var pkg = grunt.file.readJSON('package.json');
+
+    var config = grunt.file.readJSON('config.json');
+    
+    grunt.config('cssmin', {
+        minify: {
+            expand: true,
+            cwd: 'content/<%= config.services.default %>/css/',
+            src: ['*.css'],
+            dest: 'content/<%= config.services.default %>/css/'
+        }
+    });
+
     grunt.config('uglify', {
         options: {
             mangle: true
         },
         my_target: {
             files: {
-                'content/<%= pkg.services.default %>/js/lib/news_special/iframemanager__host.js': ['source/js/lib/news_special/iframemanager__host.js']
+                'content/<%= config.services.default %>/js/lib/news_special/iframemanager__host.js': ['source/js/lib/news_special/iframemanager__host.js']
             }
         }
     });
-    grunt.config(['clean', 'sasscache'], {
-        src:  ['./.sass-cache']
-    });
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.registerTask('css', ['clean:sasscache', 'sass:main', 'sass:inline', 'csslint']);
+    
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.registerTask('css', ['clean:sasscache', 'sass:main', 'sass:inline', 'csslint', 'cssmin']);
 };

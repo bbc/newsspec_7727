@@ -1,4 +1,4 @@
-define(['jquery-1.9'], function ($) {
+define(['jquery'], function ($) {
 
     var Imager = function (opts) {
         // Available image widths

@@ -1,47 +1,68 @@
-define(['jquery-1.9'], function ($) {
+define(['jquery'], function ($) {
     var hostCommunicator = {
+        postMessageAvailable: (window.postMessage ? true : false),
         init: function () {
+            var externalHostCommunicator = this;
             this.setHeight();
             this.startWatching();
-            if (window.postMessage) {
+            if (this.postMessageAvailable) {
                 this.setupPostMessage();
             }
             else {
                 this.setupIframeBridge();
             }
+            $.on('istats', function (actionType, actionName, viewLabel) {
+                externalHostCommunicator.setHeight();
+                externalHostCommunicator.registerIstatsCall(actionType, actionName, viewLabel);
+            });
         },
         height: 0,
+        registerIstatsCall: function (actionType, actionName, viewLabel) {
+            var istatsData = {
+                'actionType': actionType,
+                'actionName': actionName,
+                'viewLabel':  viewLabel
+            };
+            if (this.postMessageAvailable) {
+                this.sendDataByPostMessage(istatsData);
+            }
+            else {
+                window.istatsQueue.push(istatsData);
+            }
+        },
         setupPostMessage: function () {
-            var externalHostCommunicator = this,
-                talker_uid = window.location.pathname;
-            window.setInterval(function () {
-                var message = {
-                    height:           externalHostCommunicator.height,
-                    hostPageCallback: externalHostCommunicator.hostPageCallback
+            window.setInterval(this.sendDataByPostMessage, 32);
+        },
+        sendDataByPostMessage: function (istatsData) {
+            var talker_uid = window.location.pathname,
+                message = {
+                    height:           this.height,
+                    hostPageCallback: hostCommunicator.hostPageCallback
                 };
-                window.parent.postMessage(talker_uid + '::' + JSON.stringify(message), '*');
-            }, 32);
+            if (istatsData) {
+                message.istats = istatsData;
+            }
+            window.parent.postMessage(talker_uid + '::' + JSON.stringify(message), '*');
         },
         setupIframeBridge: function () {
-            var externalHostCommunicator = this;
-            window.setInterval(function () {
-                window.iframeBridge = {
-                    height:           externalHostCommunicator.height,
-                    hostPageCallback: externalHostCommunicator.hostPageCallback
-                };
-            }, 32);
+            window.setInterval(this.sendDataByIframeBridge, 100);
+            window.istatsQueue = [];
+        },
+        sendDataByIframeBridge: function () {
+            window.iframeBridge = {
+                height:           this.height,
+                hostPageCallback: this.hostPageCallback
+            };
         },
         startWatching: function () {
-            var externalHostCommunicator = this;
-            window.addEventListener('resize', externalHostCommunicator.setHeight, false);
-            window.setInterval(function () {
-                externalHostCommunicator.setHeight();
-            }, 32);
+            window.setInterval(this.setHeight, 32);
         },
-        newHeight: null,
+        staticHeight: null,
+        setStaticHeight: function (newStaticHeight) {
+            this.staticHeight = newStaticHeight;
+        },
         setHeight: function () {
-            var heightValues = [this.newHeight || 0];
-            this.newHeight = null;
+            var heightValues = [this.staticHeight || 0];
             if ($('.main').length > 0) {
                 heightValues.push($('.main')[0].scrollHeight);
             }
@@ -50,7 +71,7 @@ define(['jquery-1.9'], function ($) {
         },
         hostPageCallback: false,
         setHostPageInitialization: function (callback) {
-            this.hostPageCallback = callback.toString();
+            hostCommunicator.hostPageCallback = callback.toString();
         }
     };
     return hostCommunicator;

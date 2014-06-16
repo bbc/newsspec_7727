@@ -1,17 +1,17 @@
 module.exports = function (grunt) {
     
-    grunt.registerTask('checkStage', ['add_environment_data', 'nowWeCanCheckStage']);
+    grunt.registerTask('checkStage', ['nowWeCanCheckStage']);
 
     grunt.registerTask('nowWeCanCheckStage', ['Checking content on stage'], function () {
-        var path = require('path'),
-            env  = grunt.config.get('env'),
-            pkg  = grunt.file.readJSON('package.json'),
-            done = this.async(),
-            fs   = require('fs');
+        var path   = require('path'),
+            env    = grunt.config.get('env'),
+            config = grunt.file.readJSON('config.json'),
+            done   = this.async(),
+            fs     = require('fs');
 
         try {
           // Query the entry
-            stats = fs.lstatSync(env.stage.mount + '/news/special/' + pkg.year + '/newsspec_' + pkg.project_number + '/content/' + pkg.services.default);
+            stats = fs.lstatSync(env.stage.mount + '/news/special/' + config.year + '/newsspec_' + config.project_number + '/content/' + config.services.default);
           // Is it a directory?
             if (stats.isDirectory()) {
                 grunt.log.writeln('This content is on stage - OK');

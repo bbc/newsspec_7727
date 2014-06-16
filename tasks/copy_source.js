@@ -1,12 +1,12 @@
 module.exports = function (grunt) {
     grunt.registerTask('copy_source', ['Creates a copy of the default service output for each of the other services'], function () {
 
-        var pkg = grunt.file.readJSON('package.json');
+        var config = grunt.file.readJSON('config.json');
         
         var wrench             = require('wrench'),
             fs                 = require('fs'),
-            default_vocab_dir  = pkg.services.default,
-            rest_of_vocabs_dir = pkg.services.others;
+            default_vocab_dir  = config.services.default,
+            rest_of_vocabs_dir = config.services.others;
 
         rest_of_vocabs_dir.forEach(function (vocab_dir) {
             grunt.log.writeln('Copying ' + default_vocab_dir + ' source into ' + vocab_dir + '...');
