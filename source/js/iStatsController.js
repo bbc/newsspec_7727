@@ -13,26 +13,26 @@ define(['lib/news_special/bootstrap'], function (news) {
 
         listenForViewChange: function () {
             news.pubsub.on('view:updated', function (view) {
-                news.pubsub.emit('istats', ['View changed', view]);
+                news.pubsub.emit('istats', ['view-changed', 'newsspec-nonuser', view]);
             });
         },
 
         listenForNavInteraction: function () {
 
             news.pubsub.on('intro:clicked', function () {
-                news.pubsub.emit('istats', ['Introduction clicked']);
+                news.pubsub.emit('istats', ['introduction-clicked', 'newsspec-interaction']);
             });
 
             news.pubsub.on('smallCarousel:navClicked', function (direction) {
-                news.pubsub.emit('istats', ['Small carousel ' + direction + ' button clicked']);
+                news.pubsub.emit('istats', ['small-carousel-nav-clicked', 'newsspec-interaction', direction + '-arrow']);
             });
 
             news.pubsub.on('carousel:navClicked', function (direction) {
-                news.pubsub.emit('istats', ['Large carousel ' + direction + ' button clicked']);
+                news.pubsub.emit('istats', ['large-carousel-nav-clicked', 'newsspec-interaction', direction + '-arrow']);
             });
 
             news.pubsub.on('smallCarousel:thumbClicked', function (panelNumber) {
-                news.pubsub.emit('istats', ['Small carousel thumbnail ' + panelNumber + ' clicked']);
+                news.pubsub.emit('istats', ['small-carousel-thumbnail-clicked', 'newsspec-interaction', 'thumb-' + panelNumber]);
             });
         }
 
