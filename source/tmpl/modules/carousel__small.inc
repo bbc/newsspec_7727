@@ -1,9 +1,9 @@
 <div class="carousel_small_container">
 
-	<nav class="carousel_nav_container carousel_nav_container--small">
+	<div class="carousel_nav_container carousel_nav_container--small">
 		<button class="carousel_nav carousel_nav--prev">&lt;</button>
 		<button class="carousel_nav carousel_nav--next">&gt;</button>
-	</nav>
+	</div>
 
 	<ul class="carousel_small">
 
