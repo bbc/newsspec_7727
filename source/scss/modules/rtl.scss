@@ -11,12 +11,12 @@
             .carousel_nav--next {
                 right: auto;
                 left: 0;
-
-                @include horizontalFlip;
+                background-image: url('../img/chevron_left.png');
             }
             .carousel_nav--prev {
                 left: auto;
                 right: 0;
+                background-image: url('../img/chevron_right.png');
             }
         }
     }
