@@ -180,9 +180,6 @@
                 this.data.hostPageCallback &&
                 (!this.iframeInstructionsRan)
             ) {
-                /* jshint evil:true */
-                eval('var func = ' + this.data.hostPageCallback);
-                func();
                 this.iframeInstructionsRan = true;
             }
         },
